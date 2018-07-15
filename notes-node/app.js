@@ -13,7 +13,8 @@ console.log(user);
 let result = notes.add(1,2);
 console.log(result);
 console.log(_.isString('hello'));
-console.log(_.uniq([1, 4, 4, 4, 5, 3, 2, 1, 2]).sort());
+console.log(_.uniq([1, 4, 4, 4, 5, 2, 1, 2]).sort());
+console.log('hello');
 
 // fs.appendFile('greetings.txt', `Hello there ${user} you are ${notes.age}` , err => {
 //     if(err) {
