@@ -1,4 +1,11 @@
-const MongoClient = require('mongodb').MongoClient;
+//const MongoClient = require('mongodb').MongoClient;
+//destructuring in JavaScript -> create a variable from an object property
+//
+const {MongoClient, ObjectID} = require('mongodb');
+
+/* let obj = new ObjectID();
+console.log(obj); */
+
 
 //gets connection to the actual database
 MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
@@ -28,7 +35,7 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, client) => {
         if(err) {
             return console.log('Unable to connect to db.');
         }
-        console.log(JSON.stringify(result.ops, undefined, 2));
+        console.log(JSON.stringify(result.ops[0]._id.getTimestamp(), undefined, 2));
     });
 
     client.close();
