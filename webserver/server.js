@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 let app = express();
 
 //tells node where partials are located
-hbs.registerPartials(__dirname + '/views/partials')
+hbs.registerPartials(__dirname + '/views/partials');
 //use hbs as view engine
 app.set('view engine', 'hbs');
 //tells node where our static html is located
@@ -24,9 +24,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+
 
 app.use(express.static(__dirname + '/public'));
 
@@ -34,7 +32,7 @@ app.use(express.static(__dirname + '/public'));
 //handlebars helpers!
 hbs.registerHelper('getCurrentYear', ()=> {
     return new Date().getFullYear();
-});
+}); 
 
 hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
@@ -58,6 +56,12 @@ app.get('/about',(req, res) => {
 app.get('/bad', (req, res) => {
     res.send({
         error: 'This was a bad request.'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
     });
 });
 
